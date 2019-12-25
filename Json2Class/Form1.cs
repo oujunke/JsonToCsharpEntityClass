@@ -74,8 +74,8 @@ namespace JsonFomatter
                                 //递归
                                 NewStr += GetExplanatoryStr();
                                 NewStr += GetJsonProperty(key);
-                                NewStr += "\tpublic " + GetProperName(key) + " " + key.ToLower() + " {get;set;}\r\n";//类的属性名采用小写
-                                var ret = GetClassLevel("public class " + GetProperName(key) + " \n{\r\n", JsonConvert.SerializeObject(value.FirstOrDefault()), ++count, false);
+                                NewStr += "\tpublic " + GetProperName(key) + textBox3.Text + " " + GetProperName(key) + " {get;set;}\r\n";//类的属性名采用小写
+                                var ret = GetClassLevel("public class " + GetProperName(key)+textBox3.Text + " \n{\r\n", JsonConvert.SerializeObject(value.FirstOrDefault()), ++count, false);
                                 foreach (var val in ret)
                                 {
                                     orgdic.Add(Tuple.Create(val.Item1, val.Item2));
@@ -87,8 +87,8 @@ namespace JsonFomatter
                             //递归
                             NewStr += GetExplanatoryStr();
                             NewStr += GetJsonProperty(key);
-                            NewStr += "\tpublic " + GetProperName(key) + " " + key.ToLower() + " {get;set;}\r\n";//类的属性名采用小写
-                            var ret = GetClassLevel("public class " + GetProperName(key) + " \n{\r\n", JsonConvert.SerializeObject(value), ++count, false);
+                            NewStr += "\tpublic " + GetProperName(key) + textBox3.Text + " " + GetProperName(key)+ " {get;set;}\r\n";//类的属性名采用小写
+                            var ret = GetClassLevel("public class " + GetProperName(key) + textBox3.Text + " \n{\r\n", JsonConvert.SerializeObject(value), ++count, false);
                             foreach (var val in ret)
                             {
                                 orgdic.Add(Tuple.Create(val.Item1, val.Item2));
