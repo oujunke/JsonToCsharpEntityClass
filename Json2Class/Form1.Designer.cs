@@ -38,11 +38,13 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(347, 250);
+            this.button1.Location = new System.Drawing.Point(347, 309);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -73,7 +75,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(347, 173);
+            this.checkBox1.Location = new System.Drawing.Point(347, 161);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 7;
@@ -83,7 +85,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(347, 134);
+            this.checkBox2.Location = new System.Drawing.Point(347, 127);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(72, 16);
             this.checkBox2.TabIndex = 8;
@@ -93,6 +95,8 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Location = new System.Drawing.Point(347, 59);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(84, 16);
@@ -104,7 +108,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(347, 98);
+            this.checkBox4.Location = new System.Drawing.Point(347, 93);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(78, 16);
             this.checkBox4.TabIndex = 10;
@@ -124,25 +128,50 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(336, 208);
+            this.textBox3.Location = new System.Drawing.Point(336, 267);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(86, 21);
             this.textBox3.TabIndex = 12;
+            this.textBox3.Text = "Model";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(334, 190);
+            this.label1.Location = new System.Drawing.Point(334, 249);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 13;
             this.label1.Text = "类名后缀:";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(347, 195);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(60, 16);
+            this.checkBox6.TabIndex = 14;
+            this.checkBox6.Text = "Root类";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Checked = true;
+            this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox7.Location = new System.Drawing.Point(347, 229);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(48, 16);
+            this.checkBox7.TabIndex = 15;
+            this.checkBox7.Text = "折叠";
+            this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox7);
+            this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.checkBox5);
@@ -155,6 +184,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Json转实体对象";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,6 +201,8 @@
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox7;
     }
 }
 

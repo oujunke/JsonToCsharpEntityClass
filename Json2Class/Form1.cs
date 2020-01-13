@@ -17,7 +17,7 @@ namespace JsonFomatter
         public Form1()
         {
             InitializeComponent();
-            
+
             checkBox3.Checked = true;
             checkBox1.Checked = true;
         }
@@ -25,15 +25,20 @@ namespace JsonFomatter
         private void button1_Click(object sender, EventArgs e)
         {
             var originalValue = textBox1.Text;
-            string str = "public class RootObject\n{\r\n";
+            string str =checkBox6.Checked? "public class RootObject\n{\r\n":"";
 
             var ret = GetClassLevel(str, originalValue, 0, true);
             ret.Sort();
-            textBox2.Text = "";
+            StringBuilder builder = new StringBuilder();
             for (var i = 0; i < ret.Count; i++)
             {
-                textBox2.Text += "\r\n" + ret[i].Item2;
+                builder.AppendLine(ret[i].Item2);
             }
+            if (checkBox6.Checked)
+            {
+                builder.AppendLine("}");
+            }
+            textBox2.Text = builder.ToString();
         }
         /// <summary>
         /// 
@@ -75,7 +80,7 @@ namespace JsonFomatter
                                 NewStr += GetExplanatoryStr();
                                 NewStr += GetJsonProperty(key);
                                 NewStr += "\tpublic " + GetProperName(key) + textBox3.Text + " " + GetProperName(key) + " {get;set;}\r\n";//类的属性名采用小写
-                                var ret = GetClassLevel("public class " + GetProperName(key)+textBox3.Text + " \n{\r\n", JsonConvert.SerializeObject(value.FirstOrDefault()), ++count, false);
+                                var ret = GetClassLevel("public class " + GetProperName(key) + textBox3.Text + " \n{\r\n", JsonConvert.SerializeObject(value.FirstOrDefault()), ++count, false);
                                 foreach (var val in ret)
                                 {
                                     orgdic.Add(Tuple.Create(val.Item1, val.Item2));
@@ -87,7 +92,7 @@ namespace JsonFomatter
                             //递归
                             NewStr += GetExplanatoryStr();
                             NewStr += GetJsonProperty(key);
-                            NewStr += "\tpublic " + GetProperName(key) + textBox3.Text + " " + GetProperName(key)+ " {get;set;}\r\n";//类的属性名采用小写
+                            NewStr += "\tpublic " + GetProperName(key) + textBox3.Text + " " + GetProperName(key) + " {get;set;}\r\n";//类的属性名采用小写
                             var ret = GetClassLevel("public class " + GetProperName(key) + textBox3.Text + " \n{\r\n", JsonConvert.SerializeObject(value), ++count, false);
                             foreach (var val in ret)
                             {
@@ -130,14 +135,15 @@ namespace JsonFomatter
                         }
                     }
                 }
-                NewStr += "}\r\n";
                 if (isFirstLevel)
                 {
                     orgdic.Add(Tuple.Create(0, NewStr));
                 }
                 else
                 {
+                    NewStr += "}\r\n";
                     orgdic.Add(Tuple.Create(count, NewStr));
+                    
                 }
             }
             catch (Exception e)
@@ -179,7 +185,7 @@ namespace JsonFomatter
                     var NameStr = key.Split('_');
                     for (var i = 0; i < NameStr.Length; i++)
                     {
-                        if (i!=0)
+                        if (i != 0)
                         {
                             ProperName += Char.ToUpper(NameStr[i][0]) + NameStr[i].Substring(1);
                         }
@@ -243,6 +249,11 @@ namespace JsonFomatter
             {
                 checkBox4.Checked = false;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
